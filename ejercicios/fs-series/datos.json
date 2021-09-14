@@ -1,0 +1,14 @@
+[
+    {
+        "titulo": "The Walking Dead",
+        "vista": true
+    },
+    {
+        "titulo": "Game of Thrones",
+        "vista": true
+    },
+    {
+        "titulo": "Gangland Undercover",
+        "vista": false
+    }
+]
