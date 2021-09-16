@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <%- include('partials/nav.ejs') %>
+
+    <h1>Coches a la venta</h1>
+
+    <% for (const coche of coches) { %>
+        <div>
+            <h2><%= coche.marca %> <%= coche.modelo %></h2>
+            <p>Precio: <%= coche.precio %>€</p>
+            <hr>
+        </div>
+    <% } %>
+
+
+</body>
+</html>

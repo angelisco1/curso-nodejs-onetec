@@ -1,0 +1,9 @@
+extends layouts/main.pug
+
+block main
+    h1 Coches a la venta 
+
+    each coche in coches 
+        div 
+            h2 #{coche.marca} #{coche.modelo}
+            p Precio: #{coche.precio}€
