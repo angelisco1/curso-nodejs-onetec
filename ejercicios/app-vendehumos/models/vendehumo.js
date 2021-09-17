@@ -9,6 +9,13 @@ class Vendehumo {
         this.id = id
     }
 
+    save() {
+        return db.execute(
+            "INSERT INTO vendedores (nombre, tema, rrss) VALUES (?,?,?)",
+            [this.nombre, this.tema, JSON.stringify(this.rrss)]
+        )
+    }
+
     static getAllVendehumos() {
         return db.execute("SELECT * FROM vendedores")
     }

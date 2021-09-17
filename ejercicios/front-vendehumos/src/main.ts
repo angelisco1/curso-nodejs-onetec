@@ -4,9 +4,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+import SocketIOClient from 'socket.io-client'
+
 if (environment.production) {
   enableProdMode();
 }
+
+export const socket = SocketIOClient('http://localhost:3000')
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

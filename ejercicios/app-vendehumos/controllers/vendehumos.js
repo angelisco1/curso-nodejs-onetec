@@ -1,3 +1,4 @@
+const { emiter } = require('../helpers/event-emitter.js')
 const Vendehumo = require('../models/vendehumo.js')
 
 exports.getVendehumos = (req, res, next) => {
@@ -16,7 +17,15 @@ exports.getVendehumo = (req, res, next) => {
     res.json({ok: true})
 }
 exports.createVendehumo = (req, res, next) => {
-    res.json({ok: true})
+    const { nombre, tema, rrss } = req.body
+    console.log({rrss})
+    const vh = new Vendehumo(nombre, tema, rrss, null)
+    vh.save()
+        .then((datos) => {
+            vh.id = datos[0].insertId
+            emiter.emit('actualiza-la-vista', vh)
+            res.json({ok: true})
+        })
 }
 exports.updateVendehumo = (req, res, next) => {
     res.json({ok: true})

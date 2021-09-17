@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { VendehumosService } from '../vendehumos.service';
+import { socket } from '../../main'
 
 @Component({
   selector: 'app-formulario',
@@ -6,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-
-  constructor() { }
+  nuevoVendehumos = {
+    nombre: '',
+    tema: '',
+    rrss: []
+  }
+  vhAPintar = null
+  constructor(
+    private vendehusmoServ: VendehumosService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    socket.on('guardado', (datos) => {
+      console.log({datos})
+      this.vhAPintar = datos
+    })
   }
 
+  submit() {
+    this.vendehusmoServ.createVendehumos(this.nuevoVendehumos)
+      .subscribe(() => {
+        //this.router.navigate(['/'])
+
+      })
+  }
 }
